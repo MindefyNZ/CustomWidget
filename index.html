@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Dropdown Lookup Widget</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 15px;
+    }
+    select {
+      width: 100%;
+      padding: 8px;
+      font-size: 16px;
+    }
+  </style>
+</head>
+<body>
+  <label for="lookupDropdown">Select a Value:</label>
+  <select id="lookupDropdown">
+    <option value="">Loading...</option>
+  </select>
+
+  <script>
+    const dropdown = document.getElementById('lookupDropdown');
+
+    // Replace with your endpoint
+    const DATA_URL = "https://api.sheetbest.com/sheets/feb989c9-50c4-4ac7-b045-3951d7928152";
+
+    fetch(DATA_URL)
+      .then(res => res.json())
+      .then(data => {
+        dropdown.innerHTML = '';
+        data.forEach(item => {
+          const opt = document.createElement('option');
+          opt.value = item.value;
+          opt.textContent = item.label;
+          dropdown.appendChild(opt);
+        });
+      })
+      .catch(() => {
+        dropdown.innerHTML = '<option value="">Error loading data</option>';
+      });
+
+    dropdown.addEventListener('change', () => {
+      window.parent.postMessage({
+        type: 'setValue',
+        value: dropdown.value
+      }, '*');
+    });
+
+    window.addEventListener('message', function (e) {
+      if (e.data && e.data.type === 'getValue') {
+        window.parent.postMessage({
+          type: 'setValue',
+          value: dropdown.value
+        }, '*');
+      }
+    });
+
+    window.parent.postMessage({ type: 'ready' }, '*');
+  </script>
+</body>
+</html>

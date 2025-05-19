@@ -7,12 +7,12 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      padding: 8px;
+      padding: 15px;
     }
     select {
       width: 100%;
       padding: 8px;
-      font-size: 14px;
+      font-size: 16px;
     }
   </style>
 </head>
@@ -26,7 +26,7 @@
     const dropdown = document.getElementById('lookupDropdown');
 
     // Replace with your endpoint
-    const DATA_URL = "https://api.sheetbest.com/sheets/feb989c9-50c4-4ac7-b045-3951d7928152";
+    const DATA_URL = "https://raw.githubusercontent.com/openai-sandbox/chatgpt-jotform-widget/main/sample-data.json";
 
     fetch(DATA_URL)
       .then(res => res.json())

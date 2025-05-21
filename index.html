@@ -71,10 +71,15 @@
   </style>
 </head>
 <body>
-  <label for="lookupDropdown"></label>
-  <select id="lookupDropdown">
-    <option value="">Loading...</option>
-  </select>
+  <div class="dropdown-container">
+    <label for="lookupDropdown"></label>
+    <select id="lookupDropdown">
+      <option value="">Loading...</option>
+    </select>
+    <div class="custom-select-wrapper">
+      <span class="select-arrow"></span> <!-- Added instead of ::after -->
+    </div>
+  </div>
 
   <script>
     const dropdown = document.getElementById('lookupDropdown');

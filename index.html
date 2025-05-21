@@ -6,6 +6,10 @@
   <title>Dropdown Lookup Widget</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
+    * {
+      box-sizing: border-box;
+    }
+
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f5f5ff;
@@ -19,31 +23,46 @@
       max-width: 350px;
     }
 
-    .dropdown-container label {
+    label {
       display: block;
       font-weight: 500;
       color: #333;
       margin-bottom: 8px;
     }
 
+    .custom-select-wrapper {
+      position: relative;
+    }
+
     select {
       width: 100%;
-      padding: 12px;
+      padding: 12px 40px 12px 12px;
       font-size: 16px;
       border-radius: 8px;
       border: 1px solid #ccc;
-      box-sizing: border-box;
       appearance: none;
       background-color: #fff;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    /* Add custom arrow icon */
+    .custom-select-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: 12px;
+      width: 10px;
+      height: 10px;
+      pointer-events: none;
+      transform: translateY(-50%);
       background-image: url("data:image/svg+xml,%3Csvg width='14' height='10' viewBox='0 0 14 10' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1L7 7L13 1' stroke='%23666' stroke-width='2'/%3E%3C/svg%3E");
+      background-size: contain;
       background-repeat: no-repeat;
-      background-position: right 12px center;
-      background-size: 14px;
     }
 
     select:focus {
-      border-color: #4a90e2;
       outline: none;
+      border-color: #4a90e2;
       box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
     }
   </style>

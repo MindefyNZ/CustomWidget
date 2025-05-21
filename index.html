@@ -3,6 +3,7 @@
 <html>
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Dropdown Lookup Widget</title>
   <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
   <style>
@@ -13,11 +14,11 @@
     body {
       font-family: 'Roboto', sans-serif;
       padding: 40px;
+      background-color: transparent !important;
     }
 
     .dropdown-container {
-      /* Transparent background */
-      background-color: transparent;
+      background-color: transparent !important;
       border-radius: 12px;
       padding: 20px;
       max-width: 350px;
@@ -28,15 +29,32 @@
       font-weight: 500;
       color: #333;
       margin-bottom: 8px;
+    }
+
+    .custom-select-wrapper {
+      position: relative; /* critical for arrow positioning */
+      background-color: transparent;
+    }
+
+    select {
+      width: 100%;
+      padding: 12px 40px 12px 12px; /* space for arrow */
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      appearance: none;
+      -webkit-appearance: none; /* Safari fix */
+      -moz-appearance: none;
+      background-color: transparent;
       font-family: 'Roboto', sans-serif;
     }
 
     .custom-select-wrapper::after {
       content: '';
-      position: relative;
+      position: absolute;
       top: 50%;
       right: 12px;
-      width: 10px;
+      width: 14px;
       height: 10px;
       pointer-events: none;
       transform: translateY(-50%);
@@ -45,22 +63,10 @@
       background-repeat: no-repeat;
     }
 
-    select {
-      width: 100%;
-      padding: 12px 40px 12px 12px;
-      font-size: 16px;
-      border-radius: 8px;
-      border: 1px solid #ccc;
-      appearance: none;
-      font-family: 'Roboto', sans-serif;
-      background-color: transparent !important;
-    }
-
     select:focus {
       outline: none;
       border-color: #4a90e2;
       box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.3);
-      background-color: transparent !important;
     }
   </style>
 </head>
